@@ -205,14 +205,14 @@ type includeCache struct {
 	entries []includeCacheEntry
 }
 
-// Return the next cache entry. Should only be called when the cache is
+// Next returns the next cache entry. Should only be called when the cache is
 // valid and a next entry is available (the latter can be checked with
 // ExpectFile). Does not advance the cache.
 func (cache *includeCache) Next() includeCacheEntry {
 	return cache.entries[cache.next]
 }
 
-// Check that the next cache entry is about the given file. If it is
+// ExpectFile checks that the next cache entry is about the given file. If it is
 // not, or no entry is available, the cache is invalidated. Does not
 // advance the cache.
 func (cache *includeCache) ExpectFile(sourcefile string) {
@@ -222,7 +222,7 @@ func (cache *includeCache) ExpectFile(sourcefile string) {
 	}
 }
 
-// Check that the next entry matches the given values. If so, advance
+// ExpectEntry checks that the next entry matches the given values. If so, advance
 // the cache. If not, the cache is invalidated. If the cache is
 // invalidated, or was already invalid, an entry with the given values
 // is appended.
@@ -242,7 +242,7 @@ func (cache *includeCache) ExpectEntry(sourcefile string, include string, librar
 	}
 }
 
-// Check that the cache is completely consumed. If not, the cache is
+// ExpectEnd checks that the cache is completely consumed. If not, the cache is
 // invalidated.
 func (cache *includeCache) ExpectEnd() {
 	if cache.valid && cache.next < len(cache.entries) {

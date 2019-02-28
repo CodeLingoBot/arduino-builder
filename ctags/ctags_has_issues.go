@@ -229,7 +229,9 @@ func removeComments(text string, multilinecomment bool) (string, bool) {
 	return text, multilinecomment
 }
 
-/* This function scans the source files searching for "extern C" context
+/* 
+ * It save the line numbers in a map filename -> {lines...}
+ */This function scans the source files searching for "extern C" context
  * It save the line numbers in a map filename -> {lines...}
  */
 func (p *CTagsParser) FindCLinkageLines(tags []*types.CTag) map[string][]int {

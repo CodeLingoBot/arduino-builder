@@ -530,7 +530,7 @@ func LogThis(level string, format string, args ...interface{}) types.Command {
 	return &loggerAction{false, level, format, args}
 }
 
-// Returns the given string as a quoted string for use with the C
+// QuoteCppString returns the given string as a quoted string for use with the C
 // preprocessor. This adds double quotes around it and escapes any
 // double quotes and backslashes in the string.
 func QuoteCppString(str string) string {
